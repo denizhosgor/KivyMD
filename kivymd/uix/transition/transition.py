@@ -402,7 +402,7 @@ class MDSharedAxisTransition(MDTransitionBase):
         # Save hash of the objects
         self.ih = hash(self.screen_in)
         self.oh = hash(self.screen_out)
-        
+
         # Init pos
         self.screen_in.pos = manager.pos
         self.screen_out.pos = manager.pos
@@ -439,9 +439,7 @@ class MDSharedAxisTransition(MDTransitionBase):
 
     def on_progress(self, progress):
         # This code could be simplyfied with setattr, but it's slow
-        progress = getattr(MaterialMotion, self.switch_animation).transform(
-            progress
-        )
+        progress = getattr(MaterialMotion, self.switch_animation)(progress)
         progress_i = progress - 1
         progress_d = progress * 2
         # first half
